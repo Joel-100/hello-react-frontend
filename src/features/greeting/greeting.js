@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRandomGreeting } from './greeting_slice';
 
-export function Greeting() {
-  const greetingMessage = useSelector(state => state.greeting.message);
+function Greeting() {
+  const greetingMessage = useSelector((state) => state.greeting.message);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -12,7 +12,10 @@ export function Greeting() {
 
   return (
     <div>
-      <h1>A random greeting: {greetingMessage}</h1>
+      <h1>
+        A random greeting:
+        {greetingMessage}
+      </h1>
     </div>
   );
 }

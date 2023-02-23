@@ -1,6 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchRandomGreeting } from './greeting_api';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import fetchRandomGreeting from './greeting_api';
+
+export const getRandomGreeting = createAsyncThunk(
+  'greeting/getRandomGreeting',
+  async () => {
+    const response = await fetchRandomGreeting();
+    return response;
+  },
+);
 
 export const greetingSlice = createSlice({
   name: 'greeting',
@@ -18,11 +25,3 @@ export const greetingSlice = createSlice({
     });
   },
 });
-
-export const getRandomGreeting = createAsyncThunk(
-    'greeting/getRandomGreeting',
-    async () => {
-      const response = await fetchRandomGreeting();
-      return response;
-    }
-  );
